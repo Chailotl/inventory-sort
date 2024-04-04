@@ -1,0 +1,9 @@
+{
+	"gui.inventorysort.sort.tooltip": "Sort",
+	"gui.inventorysort.sort_inventory.tooltip": "Sort Inventory",
+	"gui.inventorysort.sort_container.tooltip": "Sort Container",
+	"gui.inventorysort.restock.tooltip": "Restock",
+	"gui.inventorysort.quick_stack.tooltip": "Quick Stack",
+	"gui.inventorysort.loot_all.tooltip": "Loot All",
+	"gui.inventorysort.deposit_all.tooltip": "Deposit All"
+}
