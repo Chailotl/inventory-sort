@@ -207,34 +207,4 @@ public class InventoryManager
 			}
 		}
 	}
-
-	public static void randomizeInventory(Inventory inv)
-	{
-		List<ItemStack> list = new ArrayList<>();
-
-		int offset = 0;
-		int size = inv.size();
-
-		if (inv instanceof PlayerInventory)
-		{
-			offset = 9;
-			size = 36;
-		}
-
-		for (int i = offset; i < size; ++i)
-		{
-			ItemStack stack = inv.removeStack(i);
-			if (!stack.isEmpty())
-			{
-				list.add(stack);
-			}
-		}
-
-		Collections.shuffle(list);
-
-		for (int i = 0; i < list.size(); ++i)
-		{
-			inv.setStack(i + offset, list.get(i));
-		}
-	}
 }

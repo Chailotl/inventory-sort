@@ -12,7 +12,7 @@ public class SortContainerButton extends InventoryButton
 	protected SortContainerButton(HandledScreen<?> parent, int x, int y)
 	{
 		super(parent, x, y, 0, 0, (button) -> {
-			ClientPlayNetworking.send(!shift() ? InventorySortClient.SORT_CONTAINER : InventorySortClient.RANDOMIZE, new PacketByteBuf(Unpooled.buffer()));
+			ClientPlayNetworking.send(InventorySortClient.SORT_CONTAINER, new PacketByteBuf(Unpooled.buffer()));
 		});
 
 		topAnchor = true;

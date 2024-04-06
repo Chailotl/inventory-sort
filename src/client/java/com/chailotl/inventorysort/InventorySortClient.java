@@ -20,7 +20,6 @@ InventorySortClient implements ClientModInitializer
 
 	public static final Identifier SORT_INVENTORY = new Identifier(MOD_ID, "sort_inventory");
 	public static final Identifier SORT_CONTAINER = new Identifier(MOD_ID, "sort_container");
-	public static final Identifier RANDOMIZE = new Identifier(MOD_ID, "randomize"); // DEBUG
 	public static final Identifier QUICK_STACK = new Identifier(MOD_ID, "quick_stack");
 	public static final Identifier RESTOCK = new Identifier(MOD_ID, "restock");
 	public static final Identifier DEPOSIT_ALL = new Identifier(MOD_ID, "deposit_all");

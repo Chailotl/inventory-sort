@@ -14,7 +14,6 @@ public class InventorySort implements ModInitializer
 
 	public static final Identifier SORT_INVENTORY = new Identifier(MOD_ID, "sort_inventory");
 	public static final Identifier SORT_CONTAINER = new Identifier(MOD_ID, "sort_container");
-	public static final Identifier RANDOMIZE = new Identifier(MOD_ID, "randomize"); // DEBUG
 	public static final Identifier QUICK_STACK = new Identifier(MOD_ID, "quick_stack");
 	public static final Identifier RESTOCK = new Identifier(MOD_ID, "restock");
 	public static final Identifier DEPOSIT_ALL = new Identifier(MOD_ID, "deposit_all");
@@ -28,9 +27,6 @@ public class InventorySort implements ModInitializer
 
 		ServerPlayNetworking.registerGlobalReceiver(SORT_CONTAINER, (server, player, handler, buf, responseSender) ->
 				  server.execute(() -> InventoryManager.sortInventory(player, player.currentScreenHandler.getSlot(0).inventory)));
-
-		ServerPlayNetworking.registerGlobalReceiver(RANDOMIZE, (server, player, handler, buf, responseSender) ->
-				  server.execute(() -> InventoryManager.randomizeInventory(player.currentScreenHandler.getSlot(0).inventory)));
 
 		ServerPlayNetworking.registerGlobalReceiver(QUICK_STACK, (server, player, handler, buf, responseSender) ->
 				  server.execute(() -> InventoryManager.quickStack(player.currentScreenHandler)));
