@@ -1,9 +1,9 @@
 {
 	"required": true,
-	"package": "com.chailotl.inventorysort.mixin",
+	"package": "com.chailotl.inventorysort.mixin.client",
 	"compatibilityLevel": "JAVA_17",
-	"mixins": [
-		"ExampleMixin"
+	"client": [
+		"AccessorHandledScreen"
 	],
 	"injectors": {
 		"defaultRequire": 1

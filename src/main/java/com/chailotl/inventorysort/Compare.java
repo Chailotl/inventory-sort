@@ -1,12 +1,12 @@
 package com.chailotl.inventorysort;
 
+import com.google.common.collect.Lists;
 import net.minecraft.block.Block;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
-import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.Comparator;
 
@@ -61,7 +61,7 @@ public class Compare
 		};
 	}
 
-	public static Comparator<ItemStack> itemTags(Identifier id)
+	public static Comparator<ItemStack> itemTag(Identifier id)
 	{
 		return (lhs, rhs) ->
 		{
@@ -72,7 +72,7 @@ public class Compare
 		};
 	}
 
-	public static Comparator<ItemStack> blockTags(Identifier id)
+	public static Comparator<ItemStack> blockTag(Identifier id)
 	{
 		return (lhs, rhs) ->
 		{
@@ -117,10 +117,8 @@ public class Compare
 				return 0;
 			}
 
-			int l = group.contains(lhs.getItem().getDefaultStack()) ? 0 : 1;
-			int r = group.contains(rhs.getItem().getDefaultStack()) ? 0 : 1;
-
-			InventorySort.LOGGER.info(l + " + " + r + " = " + (l - r));
+			int l = group.contains(lhs) ? 0 : 1;
+			int r = group.contains(rhs) ? 0 : 1;
 
 			return l - r;
 		};
@@ -137,10 +135,25 @@ public class Compare
 				return 0;
 			}
 
-			Object[] arr = group.getSearchTabStacks().toArray(new ItemStack[0]);
+			ItemStack[] arr = group.getSearchTabStacks().toArray(new ItemStack[0]);
+			var foo = Lists.newArrayList(group.getSearchTabStacks());
 
-			int l = ArrayUtils.indexOf(arr, lhs);
-			int r = ArrayUtils.indexOf(arr, rhs);
+			int l = 0;
+			int r = 0;
+
+			for (int i = 0; i < foo.size(); ++i)
+			{
+				Item item = foo.get(i).getItem();
+
+				if (lhs.isOf(item))
+				{
+					l = i;
+				}
+				if (rhs.isOf(item))
+				{
+					r = i;
+				}
+			}
 
 			return l - r;
 		};
@@ -162,5 +175,5 @@ public class Compare
 		return l - r;
 	};
 
-	public static Comparator<ItemStack> damage = (lhs, rhs) -> lhs.getDamage() - rhs.getDamage();
+	public static Comparator<ItemStack> damage = Comparator.comparingInt(ItemStack::getDamage);
 }

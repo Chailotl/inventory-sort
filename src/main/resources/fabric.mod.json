@@ -1,18 +1,18 @@
 {
 	"schemaVersion": 1,
-	"id": "inventory-sort",
+	"id": "inventory_sort",
 	"version": "1.0.0",
-	"name": "Inventory Sort",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"name": "Chai's Inventory Sorter",
+	"description": "An inventory sorter that complements the vanilla UI with fully configurable sorting",
 	"authors": [
-		"Me!"
+		"Chai"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"sources": "https://github.com/chailotl/inventory-sort"
 	},
 	"license": "CC0-1.0",
-	"icon": "assets/inventory-sort/icon.png",
+	"icon": "assets/inventory_sort/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
@@ -23,9 +23,9 @@
 		]
 	},
 	"mixins": [
-		"inventory-sort.mixins.json",
+		"inventory_sort.mixins.json",
 		{
-			"config": "inventory-sort.client.mixins.json",
+			"config": "inventory_sort.client.mixins.json",
 			"environment": "client"
 		}
 	],
