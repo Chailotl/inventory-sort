@@ -39,7 +39,8 @@ public class ConfigModel
 			  "item_tag/minecraft:chest_armor",
 			  "item_tag/minecraft:leg_armor",
 			  "item_tag/minecraft:foot_armor",
-			  "damage",
-			  "item_group_order/minecraft:search"
+			  "item_group_order/minecraft:search",
+			  "count",
+			  "damage"
 	);
 }

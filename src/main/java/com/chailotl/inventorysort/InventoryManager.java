@@ -79,6 +79,10 @@ public class InventoryManager
 			{
 				comparators.add(Compare.damage);
 			}
+			else if (sort.equals("count"))
+			{
+				comparators.add(Compare.count);
+			}
 			else
 			{
 				String[] split = sort.split("[\\/:]");

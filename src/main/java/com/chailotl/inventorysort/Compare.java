@@ -176,4 +176,6 @@ public class Compare
 	};
 
 	public static Comparator<ItemStack> damage = Comparator.comparingInt(ItemStack::getDamage);
+
+	public static Comparator<ItemStack> count = Comparator.comparingInt(ItemStack::getCount).reversed();
 }
