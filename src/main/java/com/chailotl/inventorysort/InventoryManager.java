@@ -35,34 +35,34 @@ public class InventoryManager
 		for (int i = offset; i < size; ++i)
 		{
 			ItemStack stack = inv.removeStack(i);
-			if (!stack.isEmpty())
+			if (stack.isEmpty()) { continue; }
+
+			// Find existing stacks to merge with
+			for (ItemStack storedStack: list)
 			{
-				// Find existing stacks to merge with
-				for (ItemStack storedStack: list)
+				int needed = storedStack.getMaxCount() - storedStack.getCount();
+
+				if (needed > 0 && stack.getItem() == storedStack.getItem())
 				{
-					int needed = storedStack.getMaxCount() - storedStack.getCount();
+					int count = stack.getCount();
 
-					if (needed > 0 && stack.getItem() == storedStack.getItem())
+					if (count <= needed)
 					{
-						int count = stack.getCount();
-
-						if (count <= needed)
-						{
-							storedStack.setCount(storedStack.getCount() + count);
-							count = 0;
-						}
-						else
-						{
-							storedStack.setCount(storedStack.getCount() + needed);
-							count -= needed;
-						}
-
-						stack.setCount(count);
+						storedStack.setCount(storedStack.getCount() + count);
+						count = 0;
 					}
-				}
+					else
+					{
+						storedStack.setCount(storedStack.getCount() + needed);
+						count -= needed;
+					}
 
-				list.add(stack);
+					stack.setCount(count);
+				}
 			}
+
+			// Stack might be empty after merging
+			if (!stack.isEmpty()) { list.add(stack); }
 		}
 
 		// Poke the creative menu - this is dumb despite being necessary
