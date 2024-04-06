@@ -8,10 +8,18 @@
 		"Chai"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/chailotl/inventory-sort"
+		"homepage": "https://modrinth.com/mod/chais-inventory-sorter/",
+		"sources": "https://github.com/chailotl/inventory-sort",
+		"issues": "https://github.com/chailotl/inventory-sort/issues"
 	},
-	"license": "CC0-1.0",
+	"custom": {
+		"modmenu": {
+			"links": {
+				"modmenu.discord": "https://discord.gg/SuZb3aJUCx"
+			}
+		}
+	},
+	"license": "LGPL-3.0",
 	"icon": "assets/inventory_sort/icon.png",
 	"environment": "*",
 	"entrypoints": {
