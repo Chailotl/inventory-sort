@@ -38,9 +38,27 @@ public class InventoryManager
 			if (!stack.isEmpty())
 			{
 				// Find existing stacks to merge with
-				for (ItemStack foo: list)
+				for (ItemStack storedStack: list)
 				{
+					int needed = storedStack.getMaxCount() - storedStack.getCount();
 
+					if (needed > 0 && stack.getItem() == storedStack.getItem())
+					{
+						int count = stack.getCount();
+
+						if (count <= needed)
+						{
+							storedStack.setCount(storedStack.getCount() + count);
+							count = 0;
+						}
+						else
+						{
+							storedStack.setCount(storedStack.getCount() + needed);
+							count -= needed;
+						}
+
+						stack.setCount(count);
+					}
 				}
 
 				list.add(stack);
@@ -178,7 +196,8 @@ public class InventoryManager
 						{
 							inventory.insertStack(container.removeStack(j, needed));
 							needed = 0;
-						} else
+						}
+						else
 						{
 							inventory.insertStack(container.removeStack(j, count));
 							needed -= count;
