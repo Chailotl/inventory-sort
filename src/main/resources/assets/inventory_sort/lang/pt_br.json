@@ -1,0 +1,12 @@
+{
+	"gui.inventory_sort.sort.tooltip": "Ordenar",
+	"gui.inventory_sort.sort_inventory.tooltip": "Ordenar Inventário",
+	"gui.inventory_sort.sort_container.tooltip": "Ordenar Recipiente",
+	"gui.inventory_sort.restock.tooltip": "Re-estocar",
+	"gui.inventory_sort.quick_stack.tooltip": "Empilhamento Rápido",
+	"gui.inventory_sort.loot_all.tooltip": "Pegar Todos",
+	"gui.inventory_sort.deposit_all.tooltip": "Depositar Todos",
+
+	"text.config.inventory_sort.title": "Configuração do Ordenador de Inventário de Chai",
+	"text.config.inventory_sort.option.sortOrder": "Ordem de Classificação"
+}
