@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"id": "inventory_sort",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"name": "Chai's Inventory Sorter",
 	"description": "An inventory sorter that complements the vanilla UI with fully configurable sorting",
 	"authors": [
