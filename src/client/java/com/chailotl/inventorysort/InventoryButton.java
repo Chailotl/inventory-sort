@@ -3,6 +3,7 @@ package com.chailotl.inventorysort;
 import com.chailotl.inventorysort.mixin.client.AccessorHandledScreen;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
+import net.minecraft.client.gui.screen.ButtonTextures;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.client.gui.widget.TexturedButtonWidget;
 import net.minecraft.client.util.InputUtil;
@@ -10,16 +11,14 @@ import net.minecraft.util.Identifier;
 
 public abstract class InventoryButton extends TexturedButtonWidget
 {
-	protected static final Identifier SORT_ICONS = new Identifier(InventorySortClient.MOD_ID, "textures/gui/sort_icons.png");
-
 	private final AccessorHandledScreen parent;
 	private final int offsetX;
 	private final int offsetY;
 	protected boolean topAnchor = false;
 
-	protected InventoryButton(HandledScreen<?> parent, int x, int y, int u, int v, PressAction onPress)
+	protected InventoryButton(HandledScreen<?> parent, int x, int y, ButtonTextures buttonTextures, PressAction onPress)
 	{
-		super(x, y, 9, 9, u, v, 9, SORT_ICONS, 27, 18, onPress);
+		super(x, y, 9, 9, buttonTextures, onPress);
 
 		this.parent = (AccessorHandledScreen) parent;
 		offsetX = x;
