@@ -1,0 +1,12 @@
+{
+	"gui.inventory_sort.sort.tooltip": "Сортировать",
+	"gui.inventory_sort.sort_inventory.tooltip": "Сортировать инвентарь",
+	"gui.inventory_sort.sort_container.tooltip": "Сортировать контейнер",
+	"gui.inventory_sort.restock.tooltip": "Взять из контейнера",
+	"gui.inventory_sort.quick_stack.tooltip": "Скинуть в контейнер",
+	"gui.inventory_sort.loot_all.tooltip": "Взять всё",
+	"gui.inventory_sort.deposit_all.tooltip": "Положить всё",
+
+	"text.config.inventory_sort.title": "Конфигурация Chai's Inventory Sorter",
+	"text.config.inventory_sort.option.sortOrder": "Порядок сортировки"
+}
