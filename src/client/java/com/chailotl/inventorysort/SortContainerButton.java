@@ -18,11 +18,10 @@ public class SortContainerButton extends InventoryButton
 
 	protected SortContainerButton(HandledScreen<?> parent, int x, int y)
 	{
-		super(parent, x, y, BUTTON_TEXTURES, (button) -> {
+		super(parent, x, y, true, BUTTON_TEXTURES, (button) -> {
 			ClientPlayNetworking.send(InventorySortClient.SORT_CONTAINER, new PacketByteBuf(Unpooled.buffer()));
 		});
 
-		topAnchor = true;
-		setTooltip(Tooltip.of(Text.translatable("gui.inventory_sort.sort_container.tooltip")));
+		setTooltip(Tooltip.of(Text.translatable("gui.inventory_sort.tooltip.sort_container")));
 	}
 }

@@ -18,10 +18,10 @@ public class SortInventoryButton extends InventoryButton
 
 	protected SortInventoryButton(HandledScreen<?> parent, int x, int y)
 	{
-		super(parent, x, y, BUTTON_TEXTURES, (button) -> {
+		super(parent, x, y, false, BUTTON_TEXTURES, (button) -> {
 			ClientPlayNetworking.send(InventorySortClient.SORT_INVENTORY, new PacketByteBuf(Unpooled.buffer()));
 		});
 
-		setTooltip(Tooltip.of(Text.translatable("gui.inventory_sort.sort_inventory.tooltip")));
+		setTooltip(Tooltip.of(Text.translatable("gui.inventory_sort.tooltip.sort_inventory")));
 	}
 }
