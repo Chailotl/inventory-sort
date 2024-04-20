@@ -29,6 +29,7 @@ loom {
 		}
 	}
 
+	accessWidenerPath = file("src/main/resources/inventory_sort.accesswidener")
 }
 
 dependencies {
