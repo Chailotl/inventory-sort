@@ -34,7 +34,6 @@ public class InventoryManager
 
 		for (int i = offset; i < size; ++i)
 		{
-			//ItemStack stack = inv.removeStack(i);
 			ItemStack stack = inv.getStack(i);
 			if (stack.isEmpty()) { continue; }
 
