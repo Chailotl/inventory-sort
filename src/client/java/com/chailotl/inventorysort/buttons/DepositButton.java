@@ -26,12 +26,9 @@ public class DepositButton extends InventoryButton
 		setTooltip(new ShiftTooltip(
 			Text.translatable("gui.inventory_sort.tooltip.quick_stack")
 				.append("\n")
-				.append(Text.translatable(
-						"gui.inventory_sort.tooltip.hold_to_action",
-						Text.translatable("gui.inventory_sort.tooltip.shift")
-							.setStyle(Style.EMPTY.withColor(Formatting.GRAY)),
-						Text.translatable("gui.inventory_sort.tooltip.deposit_all"))
-					.setStyle(Style.EMPTY.withColor(Formatting.DARK_GRAY))),
-			Text.translatable("gui.inventory_sort.tooltip.deposit_all")));
+				.append(getHoldToActionText("gui.inventory_sort.tooltip.deposit_all", Formatting.GRAY)),
+			Text.translatable("gui.inventory_sort.tooltip.deposit_all")
+				.append("\n")
+				.append(getHoldToActionText("gui.inventory_sort.tooltip.deposit_all", Formatting.WHITE))));
 	}
 }

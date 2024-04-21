@@ -6,6 +6,9 @@ import com.chailotl.inventorysort.mixin.client.AccessorHandledScreen;
 /*import net.minecraft.client.gui.screen.ButtonTextures;*/
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.client.gui.widget.TexturedButtonWidget;
+import net.minecraft.text.Style;
+import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 
 public abstract class InventoryButton extends TexturedButtonWidget
@@ -56,6 +59,16 @@ public abstract class InventoryButton extends TexturedButtonWidget
 		offsetX = x;
 		offsetY = y;
 		this.topAnchor = topAnchor;
+	}
+
+	protected Text getHoldToActionText(String action, Formatting color)
+	{
+		return Text.translatable(
+				"gui.inventory_sort.tooltip.hold_to_action",
+				Text.translatable("gui.inventory_sort.tooltip.shift")
+					.setStyle(Style.EMPTY.withColor(color)),
+				Text.translatable(action))
+			.setStyle(Style.EMPTY.withColor(Formatting.DARK_GRAY));
 	}
 
 	@Override
