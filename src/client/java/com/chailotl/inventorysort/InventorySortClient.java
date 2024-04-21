@@ -1,5 +1,9 @@
 package com.chailotl.inventorysort;
 
+import com.chailotl.inventorysort.buttons.DepositButton;
+import com.chailotl.inventorysort.buttons.LootButton;
+import com.chailotl.inventorysort.buttons.SortContainerButton;
+import com.chailotl.inventorysort.buttons.SortInventoryButton;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.screen.v1.ScreenEvents;
 import net.fabricmc.fabric.api.client.screen.v1.Screens;
@@ -7,7 +11,6 @@ import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.client.gui.screen.ingame.InventoryScreen;
 import net.minecraft.screen.*;
 import net.minecraft.util.Identifier;
-import com.chailotl.inventorysort.InventorySortConfig;
 
 import java.util.HashSet;
 
@@ -16,14 +19,14 @@ InventorySortClient implements ClientModInitializer
 {
 	public static final String MOD_ID = "inventory_sort";
 
-	public static final InventorySortConfig CONFIG = InventorySortConfig.createAndLoad();
+	public static final com.chailotl.inventorysort.InventorySortConfig CONFIG = com.chailotl.inventorysort.InventorySortConfig.createAndLoad();
 
 	public static final Identifier SORT_INVENTORY = new Identifier(MOD_ID, "sort_inventory");
 	public static final Identifier SORT_CONTAINER = new Identifier(MOD_ID, "sort_container");
-	public static final Identifier QUICK_STACK = new Identifier(MOD_ID, "quick_stack");
-	public static final Identifier RESTOCK = new Identifier(MOD_ID, "restock");
-	public static final Identifier DEPOSIT_ALL = new Identifier(MOD_ID, "deposit_all");
 	public static final Identifier LOOT_ALL = new Identifier(MOD_ID, "loot_all");
+	public static final Identifier DEPOSIT_ALL = new Identifier(MOD_ID, "deposit_all");
+	public static final Identifier RESTOCK = new Identifier(MOD_ID, "restock");
+	public static final Identifier QUICK_STACK = new Identifier(MOD_ID, "quick_stack");
 
 	private final HashSet<Class<? extends ScreenHandler>> sortableScreens = new HashSet<>();
 	private final HashSet<Class<? extends ScreenHandler>> offsetScreens = new HashSet<>();
@@ -60,13 +63,13 @@ InventorySortClient implements ClientModInitializer
 			// Ideally I should be filtering the slot types but I'm lazy
 			if (!(handledScreen instanceof InventoryScreen) && screenHandler.slots.size() >= 36 + 3)
 			{
-				QuickStackButton quickStackButton = new QuickStackButton(handledScreen, -11, y);
-				RestockButton restockButton = new RestockButton(handledScreen, -22, y);
+				DepositButton depositButton = new DepositButton(handledScreen, -11, y);
+				LootButton lootButton = new LootButton(handledScreen, -22, y);
 				SortContainerButton sortContainerButton = new SortContainerButton(handledScreen, 0, 0);
 
 				Screens.getButtons(handledScreen).add(sortContainerButton);
-				Screens.getButtons(handledScreen).add(restockButton);
-				Screens.getButtons(handledScreen).add(quickStackButton);
+				Screens.getButtons(handledScreen).add(lootButton);
+				Screens.getButtons(handledScreen).add(depositButton);
 			}
 
 			// This is down here to preserve tab order

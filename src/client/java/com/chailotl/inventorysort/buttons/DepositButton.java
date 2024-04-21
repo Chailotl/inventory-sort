@@ -1,28 +1,26 @@
-package com.chailotl.inventorysort;
+package com.chailotl.inventorysort.buttons;
 
+import com.chailotl.inventorysort.InventorySortClient;
+import com.chailotl.inventorysort.ShiftTooltip;
 import io.netty.buffer.Unpooled;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
-import net.minecraft.client.gui.screen.ButtonTextures;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
-import net.minecraft.client.gui.tooltip.Tooltip;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 
-public class QuickStackButton extends InventoryButton
+public class DepositButton extends InventoryButton
 {
-	private static final ButtonTextures BUTTON_TEXTURES = new ButtonTextures(
-		new Identifier(InventorySortClient.MOD_ID, "quick_stack"),
-		new Identifier(InventorySortClient.MOD_ID, "quick_stack_highlighted")
-	);
-
-	protected QuickStackButton(HandledScreen<?> parent, int x, int y)
+	public DepositButton(HandledScreen<?> parent, int x, int y)
 	{
-		super(parent, x, y, false, BUTTON_TEXTURES, (button) -> {
-			ClientPlayNetworking.send(!Screen.hasShiftDown() ? InventorySortClient.QUICK_STACK : InventorySortClient.DEPOSIT_ALL, new PacketByteBuf(Unpooled.buffer()));
+		super(parent, x, y, false, Icon.DEPOSIT, (button) -> {
+			ClientPlayNetworking.send(Screen.hasShiftDown()
+				? InventorySortClient.DEPOSIT_ALL
+				: InventorySortClient.QUICK_STACK,
+				new PacketByteBuf(Unpooled.buffer()));
 		});
 
 		setTooltip(new ShiftTooltip(

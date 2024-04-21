@@ -34,7 +34,8 @@ public class InventoryManager
 
 		for (int i = offset; i < size; ++i)
 		{
-			ItemStack stack = inv.removeStack(i);
+			//ItemStack stack = inv.removeStack(i);
+			ItemStack stack = inv.getStack(i);
 			if (stack.isEmpty()) { continue; }
 
 			// Find existing stacks to merge with
@@ -135,6 +136,13 @@ public class InventoryManager
 		// Sort list
 		list.sort(new ChainComparator(comparators));
 
+		// Pad list
+		while (list.size() < size)
+		{
+			list.add(ItemStack.EMPTY);
+		}
+
+		// Set list
 		for (int i = 0; i < list.size(); ++i)
 		{
 			inv.setStack(i + offset, list.get(i));

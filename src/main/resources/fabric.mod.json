@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"id": "inventory_sort",
-	"version": "1.0.3",
+	"version": "${version}",
 	"name": "Chai's Inventory Sorter",
 	"description": "An inventory sorter that complements the vanilla UI with fully configurable sorting",
 	"authors": [
@@ -40,7 +40,7 @@
 	"accessWidener": "inventory_sort.accesswidener",
 	"depends": {
 		"fabricloader": ">=0.15.7",
-		"minecraft": "~1.20.2",
+		"minecraft": "~${minecraft_version}",
 		"java": ">=17",
 		"fabric-api": "*",
 		"owo-lib": "^0.11.2"
