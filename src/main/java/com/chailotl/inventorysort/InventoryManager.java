@@ -77,57 +77,30 @@ public class InventoryManager
 
 		for (String sort: sortOrder)
 		{
-			if (sort.equals("blocks"))
+			switch (sort)
 			{
-				comparators.add(Compare.blocks);
-			}
-			else if (sort.equals("items"))
-			{
-				comparators.add(Compare.items);
-			}
-			else if (sort.equals("stackables"))
-			{
-				comparators.add(Compare.stackables);
-			}
-			else if (sort.equals("unstackables"))
-			{
-				comparators.add(Compare.unstackables);
-			}
-			else if (sort.equals("damage"))
-			{
-				comparators.add(Compare.damage);
-			}
-			else if (sort.equals("count"))
-			{
-				comparators.add(Compare.count);
-			}
-			else
-			{
-				String[] split = sort.split("[\\/:]");
-
-				if (split.length == 1) { continue; }
-
-				Identifier id = new Identifier(split[1], split[2]);
-
-				if (split[0].equals("item"))
+				case "blocks" -> comparators.add(Compare.blocks);
+				case "items" -> comparators.add(Compare.items);
+				case "stackables" -> comparators.add(Compare.stackables);
+				case "unstackables" -> comparators.add(Compare.unstackables);
+				case "damage" -> comparators.add(Compare.damage);
+				case "count" -> comparators.add(Compare.count);
+				default ->
 				{
-					comparators.add(Compare.item(id));
-				}
-				else if (split[0].equals("item_tag"))
-				{
-					comparators.add(Compare.itemTag(id));
-				}
-				else if (split[0].equals("block_tag"))
-				{
-					comparators.add(Compare.blockTag(id));
-				}
-				else if (split[0].equals("item_group"))
-				{
-					comparators.add(Compare.itemGroup(id));
-				}
-				else if (split[0].equals("item_group_order"))
-				{
-					comparators.add(Compare.itemGroupOrder(id));
+					String[] split = sort.split("[/:]");
+					if (split.length == 1)
+					{
+						continue;
+					}
+					Identifier id = new Identifier(split[1], split[2]);
+					switch (split[0])
+					{
+						case "item" -> comparators.add(Compare.item(id));
+						case "item_tag" -> comparators.add(Compare.itemTag(id));
+						case "block_tag" -> comparators.add(Compare.blockTag(id));
+						case "item_group" -> comparators.add(Compare.itemGroup(id));
+						case "item_group_order" -> comparators.add(Compare.itemGroupOrder(id));
+					}
 				}
 			}
 		}
