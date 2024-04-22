@@ -108,16 +108,10 @@ public class InventoryManager
 		// Sort list
 		list.sort(new ChainComparator(comparators));
 
-		// Pad list
-		while (list.size() < size)
+		for (int i = offset; i < size; ++i)
 		{
-			list.add(ItemStack.EMPTY);
-		}
-
-		// Set list
-		for (int i = 0; i < list.size(); ++i)
-		{
-			inv.setStack(i + offset, list.get(i));
+			ItemStack stack = list.stream().skip(i - offset).findFirst().orElse(ItemStack.EMPTY);
+			inv.setStack(i, stack);
 		}
 	}
 
