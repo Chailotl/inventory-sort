@@ -24,20 +24,16 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"com.chailotl.inventorysort.InventorySort"
+			"com.chailotl.inventory_sort.Main"
 		],
 		"client": [
-			"com.chailotl.inventorysort.InventorySortClient"
+			"com.chailotl.inventory_sort.Main"
 		]
 	},
 	"mixins": [
-		"inventory_sort.mixins.json",
-		{
-			"config": "inventory_sort.client.mixins.json",
-			"environment": "client"
-		}
+		"inventory_sort.mixins.json"
 	],
-	"accessWidener": "inventory_sort.accesswidener",
+	"accessWidener": "inventory_sort.accesswidener.bak",
 	"depends": {
 		"fabricloader": ">=0.15.7",
 		"minecraft": "~${minecraft_version}",

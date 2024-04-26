@@ -1,5 +1,7 @@
-package com.chailotl.inventorysort;
+package com.chailotl.inventory_sort;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.tooltip.Tooltip;
@@ -9,6 +11,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
+@Environment(EnvType.CLIENT)
 public class ShiftTooltip extends Tooltip
 {
 	private final Text altContent;

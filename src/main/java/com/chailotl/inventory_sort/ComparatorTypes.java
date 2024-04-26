@@ -1,4 +1,4 @@
-package com.chailotl.inventorysort;
+package com.chailotl.inventory_sort;
 
 import com.google.common.collect.Lists;
 import net.minecraft.block.Block;
@@ -10,7 +10,7 @@ import net.minecraft.util.Identifier;
 
 import java.util.Comparator;
 
-public class Compare
+public class ComparatorTypes
 {
 	// Place blocks first
 	public static Comparator<ItemStack> blocks = (lhs, rhs) ->

@@ -1,4 +1,4 @@
-package com.chailotl.inventorysort.mixin;
+package com.chailotl.inventory_sort.mixin;
 
 import net.minecraft.screen.ScreenHandler;
 import org.spongepowered.asm.mixin.Mixin;

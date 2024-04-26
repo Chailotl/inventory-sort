@@ -1,11 +1,15 @@
 {
 	"required": true,
-	"package": "com.chailotl.inventorysort.mixin",
+	"package": "com.chailotl.inventory_sort.mixin",
 	"compatibilityLevel": "JAVA_17",
 	"mixins": [
 		"ModifyScreenHandler"
 	],
 	"injectors": {
 		"defaultRequire": 1
-	}
+	},
+	"client": [
+		"AccessorCreativeInventoryScreen",
+		"AccessorHandledScreen"
+	]
 }

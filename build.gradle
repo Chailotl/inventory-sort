@@ -20,15 +20,6 @@ repositories {
 }
 
 loom {
-    splitEnvironmentSourceSets()
-
-	mods {
-		"inventory-sort" {
-			sourceSet sourceSets.main
-			sourceSet sourceSets.client
-		}
-	}
-
 	accessWidenerPath = file("src/main/resources/inventory_sort.accesswidener")
 }
 
@@ -44,7 +35,6 @@ dependencies {
 	modImplementation "io.wispforest:owo-lib:${project.owo_version}"
 	include "io.wispforest:owo-sentinel:${project.owo_version}"
 	annotationProcessor modImplementation("io.wispforest:owo-lib:${project.owo_version}")
-	//clientAnnotationProcessor modImplementation("io.wispforest:owo-lib:${project.owo_version}")
 	
 }
 

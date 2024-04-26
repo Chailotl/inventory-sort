@@ -1,7 +1,9 @@
-package com.chailotl.inventorysort.buttons;
+package com.chailotl.inventory_sort.buttons;
 
-import com.chailotl.inventorysort.InventorySortClient;
-import com.chailotl.inventorysort.mixin.client.AccessorHandledScreen;
+import com.chailotl.inventory_sort.Main;
+import com.chailotl.inventory_sort.mixin.AccessorHandledScreen;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 /*? if ~1.20.2 */
 import net.minecraft.client.gui.screen.ButtonTextures;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
@@ -11,27 +13,28 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 
+@Environment(EnvType.CLIENT)
 public abstract class InventoryButton extends TexturedButtonWidget
 {
 	protected enum Icon { SORT, LOOT, DEPOSIT }
 
 	/*? if ~1.20.2 {*/
 	private static final ButtonTextures SORT_ICON = new ButtonTextures(
-		new Identifier(InventorySortClient.MOD_ID, "sort"),
-		new Identifier(InventorySortClient.MOD_ID, "sort_highlighted")
+		new Identifier(Main.MOD_ID, "sort"),
+		new Identifier(Main.MOD_ID, "sort_highlighted")
 	);
 
 	private static final ButtonTextures LOOT_ICON = new ButtonTextures(
-		new Identifier(InventorySortClient.MOD_ID, "loot"),
-		new Identifier(InventorySortClient.MOD_ID, "loot_highlighted")
+		new Identifier(Main.MOD_ID, "loot"),
+		new Identifier(Main.MOD_ID, "loot_highlighted")
 	);
 
 	private static final ButtonTextures DEPOSIT_ICON = new ButtonTextures(
-		new Identifier(InventorySortClient.MOD_ID, "deposit"),
-		new Identifier(InventorySortClient.MOD_ID, "deposit_highlighted")
+		new Identifier(Main.MOD_ID, "deposit"),
+		new Identifier(Main.MOD_ID, "deposit_highlighted")
 	);
 	/*?} else {*//*
-	private static final Identifier SORT_ICONS = new Identifier(InventorySortClient.MOD_ID, "textures/gui/sort_icons.png");
+	private static final Identifier SORT_ICONS = new Identifier(Main.MOD_ID, "textures/gui/sort_icons.png");
 	*//*?} */
 
 	private final AccessorHandledScreen parent;
@@ -80,7 +83,7 @@ public abstract class InventoryButton extends TexturedButtonWidget
 	@Override
 	public int getY()
 	{
-		return parent.getY() + offsetY + (!topAnchor ? parent.getBackgroundHeight() - 95 : 6);
+		return parent.getY() + offsetY + (!topAnchor ? parent.getBackgroundHeight() - 94 : 6);
 	}
 
 	@Override

@@ -1,4 +1,4 @@
-package com.chailotl.inventorysort;
+package com.chailotl.inventory_sort;
 
 import io.wispforest.owo.config.ConfigSynchronizer;
 import io.wispforest.owo.config.Option;
@@ -79,12 +79,12 @@ public class InventoryManager
 		{
 			switch (sort)
 			{
-				case "blocks" -> comparators.add(Compare.blocks);
-				case "items" -> comparators.add(Compare.items);
-				case "stackables" -> comparators.add(Compare.stackables);
-				case "unstackables" -> comparators.add(Compare.unstackables);
-				case "damage" -> comparators.add(Compare.damage);
-				case "count" -> comparators.add(Compare.count);
+				case "blocks" -> comparators.add(ComparatorTypes.blocks);
+				case "items" -> comparators.add(ComparatorTypes.items);
+				case "stackables" -> comparators.add(ComparatorTypes.stackables);
+				case "unstackables" -> comparators.add(ComparatorTypes.unstackables);
+				case "damage" -> comparators.add(ComparatorTypes.damage);
+				case "count" -> comparators.add(ComparatorTypes.count);
 				default ->
 				{
 					String[] split = sort.split("[/:]");
@@ -95,18 +95,18 @@ public class InventoryManager
 					Identifier id = new Identifier(split[1], split[2]);
 					switch (split[0])
 					{
-						case "item" -> comparators.add(Compare.item(id));
-						case "item_tag" -> comparators.add(Compare.itemTag(id));
-						case "block_tag" -> comparators.add(Compare.blockTag(id));
-						case "item_group" -> comparators.add(Compare.itemGroup(id));
-						case "item_group_order" -> comparators.add(Compare.itemGroupOrder(id));
+						case "item" -> comparators.add(ComparatorTypes.item(id));
+						case "item_tag" -> comparators.add(ComparatorTypes.itemTag(id));
+						case "block_tag" -> comparators.add(ComparatorTypes.blockTag(id));
+						case "item_group" -> comparators.add(ComparatorTypes.itemGroup(id));
+						case "item_group_order" -> comparators.add(ComparatorTypes.itemGroupOrder(id));
 					}
 				}
 			}
 		}
 
 		// Sort list
-		list.sort(new ChainComparator(comparators));
+		list.sort(new ComparatorChain(comparators));
 
 		for (int i = offset; i < size; ++i)
 		{
