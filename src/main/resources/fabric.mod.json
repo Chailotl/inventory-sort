@@ -27,7 +27,7 @@
 			"com.chailotl.inventory_sort.Main"
 		],
 		"client": [
-			"com.chailotl.inventory_sort.Main"
+			"com.chailotl.inventory_sort.ClientMain"
 		]
 	},
 	"mixins": [
