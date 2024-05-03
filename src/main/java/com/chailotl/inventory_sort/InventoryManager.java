@@ -119,6 +119,7 @@ public class InventoryManager
 		int size = screenHandler.getSlot(0).inventory.size();
 		for (int i = size; i < size + 27; ++i)
 		{
+			if (isFavorite(screenHandler.getSlot(i).getStack())) { continue; }
 			screenHandler.quickMove(null, i);
 		}
 	}
@@ -139,6 +140,7 @@ public class InventoryManager
 		int size = slots.size();
 		for (int i = size - 36; i < size - 9; ++i)
 		{
+			if (isFavorite(screenHandler.getSlot(i).getStack())) { continue; }
 			if (container.containsAny(Collections.singleton(slots.get(i).getStack().getItem())))
 			{
 				screenHandler.quickMove(null, i);
