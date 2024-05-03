@@ -1,11 +1,10 @@
 package com.chailotl.inventory_sort;
 
 import io.wispforest.owo.config.Option;
-import io.wispforest.owo.config.annotation.Config;
-import io.wispforest.owo.config.annotation.Modmenu;
-import io.wispforest.owo.config.annotation.Sync;
+import io.wispforest.owo.config.annotation.*;
 
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 @Modmenu(modId = Main.MOD_ID)
@@ -42,5 +41,30 @@ public class ConfigModel
 		"item_group_order/minecraft:search",
 		"count",
 		"damage"
+	);
+
+	public List<String> containerScreens = Arrays.asList(
+		"net.minecraft.screen.GenericContainerScreenHandler",
+		"net.minecraft.screen.ShulkerBoxScreenHandler",
+		"net.minecraft.screen.Generic3x3ContainerScreenHandler",
+		"net.minecraft.screen.HopperScreenHandler",
+		"net.minecraft.screen.HorseScreenHandler"
+	);
+
+	/*public List<String> screenOffsetsKey = Arrays.asList(
+		"net.minecraft.screen.GenericContainerScreenHandler",
+		"net.minecraft.screen.ShulkerBoxScreenHandler",
+		"net.minecraft.screen.EnchantmentScreenHandler"
+	);
+
+	public List<Integer> screenOffsetsValue = Arrays.asList(
+		-1,
+		-1,
+		1
+	);*/
+
+	public List<String> disabledScreens = Arrays.asList(
+		"net.minecraft.screen.BeaconScreenHandler",
+		"net.minecraft.screen.LoomScreenHandler"
 	);
 }
