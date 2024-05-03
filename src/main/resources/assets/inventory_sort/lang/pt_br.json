@@ -6,7 +6,11 @@
 	"gui.inventory_sort.tooltip.quick_stack": "Empilhamento Rápido",
 	"gui.inventory_sort.tooltip.loot_all": "Pegar Todos",
 	"gui.inventory_sort.tooltip.deposit_all": "Depositar Todos",
+	"gui.inventory_sort.tooltip.hold_to_action": "Segure [%1$s] para %2$s",
+	"gui.inventory_sort.tooltip.shift": "Shift",
 
 	"text.config.inventory_sort.title": "Configuração do Ordenador de Inventário de Chai",
-	"text.config.inventory_sort.option.sortOrder": "Ordem de Classificação"
+	"text.config.inventory_sort.option.sortOrder": "Ordem de Classificação",
+	"text.config.inventory_sort.option.containerScreens": "Telas de Recipientes",
+	"text.config.inventory_sort.option.disabledScreens": "Telas Desabilitadas"
 }
