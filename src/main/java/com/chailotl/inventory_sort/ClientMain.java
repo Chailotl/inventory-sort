@@ -17,7 +17,7 @@ import java.util.Hashtable;
 public class ClientMain implements ClientModInitializer
 {
 	private final HashSet<Class<? extends ScreenHandler>> ignoreScreens = new HashSet<>();
-	private final HashSet<Class<? extends ScreenHandler>> sortableScreens = new HashSet<>();
+	private final HashSet<Class<? extends ScreenHandler>> containerScreens = new HashSet<>();
 	private final Hashtable<Class<? extends ScreenHandler>, Integer> offsetScreens = new Hashtable<>();
 
 	@Override
@@ -27,12 +27,11 @@ public class ClientMain implements ClientModInitializer
 		ignoreScreens.add(LoomScreenHandler.class);
 		ignoreScreens.add(CreativeInventoryScreen.CreativeScreenHandler.class);
 
-		sortableScreens.add(PlayerScreenHandler.class);
-		sortableScreens.add(GenericContainerScreenHandler.class);
-		sortableScreens.add(ShulkerBoxScreenHandler.class);
-		sortableScreens.add(Generic3x3ContainerScreenHandler.class);
-		sortableScreens.add(HopperScreenHandler.class);
-		sortableScreens.add(HorseScreenHandler.class);
+		containerScreens.add(GenericContainerScreenHandler.class);
+		containerScreens.add(ShulkerBoxScreenHandler.class);
+		containerScreens.add(Generic3x3ContainerScreenHandler.class);
+		containerScreens.add(HopperScreenHandler.class);
+		containerScreens.add(HorseScreenHandler.class);
 
 		offsetScreens.put(GenericContainerScreenHandler.class, -1);
 		offsetScreens.put(ShulkerBoxScreenHandler.class, -1);
@@ -54,7 +53,7 @@ public class ClientMain implements ClientModInitializer
 			// Adding buttons
 			SortInventoryButton sortInventoryButton = new SortInventoryButton(handledScreen, 0, y);
 
-			if (sortableScreens.stream().anyMatch(clazz -> clazz.isInstance(screenHandler)) ||
+			if (containerScreens.stream().anyMatch(clazz -> clazz.isInstance(screenHandler)) ||
 				screenHandler.slots.size() >= 36 + 18)
 			{
 				DepositButton depositButton = new DepositButton(handledScreen, -11, y);
