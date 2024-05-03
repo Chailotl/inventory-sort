@@ -7,6 +7,7 @@ import com.chailotl.inventory_sort.buttons.SortInventoryButton;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.screen.v1.ScreenEvents;
 import net.fabricmc.fabric.api.client.screen.v1.Screens;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.gui.screen.ingame.CreativeInventoryScreen;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.screen.*;
@@ -15,6 +16,7 @@ import java.util.Hashtable;
 
 public class ClientMain implements ClientModInitializer
 {
+	public static final boolean IS_ITEM_FAVORITES_LOADED = FabricLoader.getInstance().isModLoaded("itemfavorites");
 	private final Hashtable<String, Integer> offsetScreens = new Hashtable<>();
 
 	@Override

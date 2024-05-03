@@ -12,10 +12,7 @@ import net.minecraft.screen.slot.Slot;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class InventoryManager
 {
@@ -35,7 +32,7 @@ public class InventoryManager
 		for (int i = offset; i < size; ++i)
 		{
 			ItemStack stack = inv.getStack(i);
-			if (stack.isEmpty()) { continue; }
+			if (stack.isEmpty() || isFavorite(stack)) {  continue; }
 
 			// Find existing stacks to merge with
 			for (ItemStack storedStack: list)
@@ -66,7 +63,7 @@ public class InventoryManager
 		}
 
 		// Poke the creative menu - this is dumb despite being necessary
-		ItemGroups.updateDisplayContext(FeatureFlags.DEFAULT_ENABLED_FEATURES, false, player.getWorld().getRegistryManager());
+		//ItemGroups.updateDisplayContext(FeatureFlags.DEFAULT_ENABLED_FEATURES, false, player.getWorld().getRegistryManager());
 
 		// Get player config
 		var config = ConfigSynchronizer.getClientOptions(player, "inventory_sort");
@@ -110,7 +107,8 @@ public class InventoryManager
 
 		for (int i = offset; i < size; ++i)
 		{
-			ItemStack stack = list.stream().skip(i - offset).findFirst().orElse(ItemStack.EMPTY);
+			if (isFavorite(inv.getStack(i))) { continue; }
+			ItemStack stack = list.size() > 0 ? list.remove(0) : ItemStack.EMPTY;
 			inv.setStack(i, stack);
 		}
 	}
@@ -179,6 +177,20 @@ public class InventoryManager
 					}
 				}
 			}
+		}
+	}
+
+	public static boolean isFavorite(ItemStack itemStack)
+	{
+		if (!ClientMain.IS_ITEM_FAVORITES_LOADED) { return false; }
+
+		try
+		{
+			return (boolean)ItemStack.class.getMethod("isFavorite").invoke(itemStack);
+		}
+		catch (Exception e)
+		{
+			return false;
 		}
 	}
 }
