@@ -4,9 +4,7 @@ import io.wispforest.owo.config.ConfigSynchronizer;
 import io.wispforest.owo.config.Option;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
-import net.minecraft.item.ItemGroups;
 import net.minecraft.item.ItemStack;
-import net.minecraft.resource.featuretoggle.FeatureFlags;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -39,7 +37,7 @@ public class InventoryManager
 			{
 				int needed = storedStack.getMaxCount() - storedStack.getCount();
 
-				if (needed > 0 && stack.getItem() == storedStack.getItem())
+				if (needed > 0 && stack.getItem() == storedStack.getItem() && isNbtEqual(stack, storedStack))
 				{
 					int count = stack.getCount();
 
@@ -141,7 +139,9 @@ public class InventoryManager
 		for (int i = size - 36; i < size - 9; ++i)
 		{
 			if (isFavorite(screenHandler.getSlot(i).getStack())) { continue; }
-			if (container.containsAny(Collections.singleton(slots.get(i).getStack().getItem())))
+
+			ItemStack playerInvStack = slots.get(i).getStack();
+			if (container.containsAny(stack -> stack.getItem() == playerInvStack.getItem() && isNbtEqual(stack, playerInvStack)))
 			{
 				screenHandler.quickMove(null, i);
 			}
@@ -162,7 +162,7 @@ public class InventoryManager
 				for (int j = 0; j < container.size(); ++j)
 				{
 					ItemStack stackTwo = container.getStack(j);
-					if (stackOne.getItem() == stackTwo.getItem())
+					if (stackOne.getItem() == stackTwo.getItem() && isNbtEqual(stackOne, stackTwo))
 					{
 						int count = stackTwo.getCount();
 
@@ -195,4 +195,9 @@ public class InventoryManager
 			return false;
 		}
 	}
+
+	public static boolean isNbtEqual(ItemStack stack1, ItemStack stack2)
+	{
+        return !stack1.hasNbt() || !stack2.hasNbt() || stack1.getNbt().equals(stack2.getNbt());
+    }
 }
