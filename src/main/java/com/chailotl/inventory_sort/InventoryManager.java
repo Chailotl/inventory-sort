@@ -2,6 +2,8 @@ package com.chailotl.inventory_sort;
 
 import io.wispforest.owo.config.ConfigSynchronizer;
 import io.wispforest.owo.config.Option;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
@@ -184,7 +186,10 @@ public class InventoryManager
 
 	public static boolean isFavorite(ItemStack itemStack)
 	{
-		if (!ClientMain.IS_ITEM_FAVORITES_LOADED) { return false; }
+		if (FabricLoader.getInstance().getEnvironmentType() == EnvType.CLIENT)
+			if (!ClientMain.IS_ITEM_FAVORITES_LOADED) { return false; }
+		else if (FabricLoader.getInstance().getEnvironmentType() == EnvType.SERVER)
+			if (!ServerMain.IS_ITEM_FAVORITES_LOADED) { return false; }
 
 		try
 		{
