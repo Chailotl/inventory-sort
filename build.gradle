@@ -1,6 +1,7 @@
 plugins {
 	id 'fabric-loom' version '1.6-SNAPSHOT'
 	id 'maven-publish'
+	id "me.modmuss50.mod-publish-plugin" version "0.5.1"
 }
 
 version = "${project.mod_version}+${project.minecraft_version}"
@@ -8,6 +9,28 @@ group = project.maven_group
 
 base {
 	archivesName = project.archives_base_name
+}
+
+publishMods {
+	file = remapJar.archiveFile
+	BufferedReader br = new BufferedReader(new InputStreamReader(System.in))
+	System.out.println("Enter changelog:")
+	changelog = br.readLine()
+	type = STABLE
+	displayName = "Chai's Inventory Sorter ${project.mod_version}+${project.minecraft_version}"
+	modLoaders.add("fabric")
+
+	modrinth {
+		accessToken = providers.environmentVariable("MODRINTH_TOKEN")
+		projectId = "s9XXQTOb"
+		minecraftVersionRange {
+			start = project.minecraft_version
+			end = project.minecraft_version_max
+		}
+		requires("fabric-api")
+		requires("owo-lib")
+		optional("modmenu")
+	}
 }
 
 repositories {
