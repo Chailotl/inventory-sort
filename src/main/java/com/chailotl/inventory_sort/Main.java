@@ -2,6 +2,7 @@ package com.chailotl.inventory_sort;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +12,7 @@ public class Main implements ModInitializer
 	public static final String MOD_ID = "inventory_sort";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
+	public static final boolean IS_ITEM_FAVORITES_LOADED = FabricLoader.getInstance().isModLoaded("itemfavorites");
 	public static final com.chailotl.inventory_sort.InventorySortConfig CONFIG = com.chailotl.inventory_sort.InventorySortConfig.createAndLoad();
 
 	public static final Identifier SORT_INVENTORY = new Identifier(MOD_ID, "sort_inventory");

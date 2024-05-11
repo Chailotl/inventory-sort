@@ -184,7 +184,7 @@ public class InventoryManager
 
 	public static boolean isFavorite(ItemStack itemStack)
 	{
-		if (!ClientMain.IS_ITEM_FAVORITES_LOADED) { return false; }
+		if (!Main.IS_ITEM_FAVORITES_LOADED) { return false; }
 
 		try
 		{
