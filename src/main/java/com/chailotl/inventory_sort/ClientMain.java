@@ -4,6 +4,7 @@ import com.chailotl.inventory_sort.buttons.DepositButton;
 import com.chailotl.inventory_sort.buttons.LootButton;
 import com.chailotl.inventory_sort.buttons.SortContainerButton;
 import com.chailotl.inventory_sort.buttons.SortInventoryButton;
+import io.wispforest.owo.config.ui.ConfigScreen;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.screen.v1.ScreenEvents;
 import net.fabricmc.fabric.api.client.screen.v1.Screens;

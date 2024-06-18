@@ -4,7 +4,6 @@ import io.wispforest.owo.config.Option;
 import io.wispforest.owo.config.annotation.*;
 
 import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 
 @Modmenu(modId = Main.MOD_ID)
