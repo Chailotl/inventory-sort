@@ -87,7 +87,11 @@ public class InventoryManager
 					{
 						continue;
 					}
-					Identifier id = new Identifier(split[1], split[2]);
+					/*? if ~1.21 {*/
+					Identifier id = Identifier.of(split[1], split[2]);
+					/*?} else {*/
+					/*Identifier id = new Identifier(split[1], split[2]);
+					*//*?}*/
 					switch (split[0])
 					{
 						case "item" -> comparators.add(ComparatorTypes.item(id));
@@ -106,7 +110,7 @@ public class InventoryManager
 		for (int i = offset; i < size; ++i)
 		{
 			if (isFavorite(inv.getStack(i))) { continue; }
-			ItemStack stack = list.size() > 0 ? list.remove(0) : ItemStack.EMPTY;
+			ItemStack stack = !list.isEmpty() ? list.removeFirst() : ItemStack.EMPTY;
 			inv.setStack(i, stack);
 		}
 	}
@@ -198,6 +202,10 @@ public class InventoryManager
 
 	public static boolean isNbtEqual(ItemStack stack1, ItemStack stack2)
 	{
-        return !stack1.hasNbt() || !stack2.hasNbt() || stack1.getNbt().equals(stack2.getNbt());
+		/*? if >=1.20.5 {*/
+		return stack1.getComponents().equals(stack2.getComponents());
+		/*?} else {*/
+		/*return !stack1.hasNbt() || !stack2.hasNbt() || stack1.getNbt().equals(stack2.getNbt());
+		*//*?}*/
     }
 }
