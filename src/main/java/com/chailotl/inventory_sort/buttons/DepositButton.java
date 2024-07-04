@@ -18,7 +18,7 @@ import net.minecraft.network.PacketByteBuf;
 *//*?}*/
 
 @Environment(EnvType.CLIENT)
-public final class DepositButton extends InventoryButton
+public class DepositButton extends InventoryButton
 {
 	public DepositButton(HandledScreen<?> parent, int x, int y)
 	{
