@@ -8,10 +8,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /*? if >=1.20.5 {*/
-import com.chailotl.inventory_sort.buttons.DepositButton;
-import com.chailotl.inventory_sort.buttons.LootButton;
-import com.chailotl.inventory_sort.buttons.SortContainerButton;
-import com.chailotl.inventory_sort.buttons.SortInventoryButton;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 /*?}*/
 
@@ -43,29 +39,29 @@ public class Main implements ModInitializer
 	public void onInitialize()
 	{
 		/*? if >=1.20.5 {*/
-		PayloadTypeRegistry.playC2S().register(SortInventoryButton.SortInventoryPayload.ID, SortInventoryButton.SortInventoryPayload.CODEC);
-		PayloadTypeRegistry.playC2S().register(SortContainerButton.SortContainerPayload.ID, SortContainerButton.SortContainerPayload.CODEC);
-		PayloadTypeRegistry.playC2S().register(DepositButton.QuickStackPayload.ID, DepositButton.QuickStackPayload.CODEC);
-		PayloadTypeRegistry.playC2S().register(LootButton.RestockPayload.ID, LootButton.RestockPayload.CODEC);
-		PayloadTypeRegistry.playC2S().register(DepositButton.DepositAllPayload.ID, DepositButton.DepositAllPayload.CODEC);
-		PayloadTypeRegistry.playC2S().register(LootButton.LootAllPayload.ID, LootButton.LootAllPayload.CODEC);
+		PayloadTypeRegistry.playC2S().register(Networking.SortInventoryPayload.ID, Networking.SortInventoryPayload.CODEC);
+		PayloadTypeRegistry.playC2S().register(Networking.SortContainerPayload.ID, Networking.SortContainerPayload.CODEC);
+		PayloadTypeRegistry.playC2S().register(Networking.QuickStackPayload.ID, Networking.QuickStackPayload.CODEC);
+		PayloadTypeRegistry.playC2S().register(Networking.RestockPayload.ID, Networking.RestockPayload.CODEC);
+		PayloadTypeRegistry.playC2S().register(Networking.DepositAllPayload.ID, Networking.DepositAllPayload.CODEC);
+		PayloadTypeRegistry.playC2S().register(Networking.LootAllPayload.ID, Networking.LootAllPayload.CODEC);
 
-		ServerPlayNetworking.registerGlobalReceiver(SortInventoryButton.SortInventoryPayload.ID, (payload, context) ->
+		ServerPlayNetworking.registerGlobalReceiver(Networking.SortInventoryPayload.ID, (payload, context) ->
 				context.server().execute(() -> InventoryManager.sortInventory(context.player(), context.player().getInventory())));
 
-		ServerPlayNetworking.registerGlobalReceiver(SortContainerButton.SortContainerPayload.ID, (payload, context) ->
+		ServerPlayNetworking.registerGlobalReceiver(Networking.SortContainerPayload.ID, (payload, context) ->
 				context.server().execute(() -> InventoryManager.sortInventory(context.player(), context.player().currentScreenHandler.getSlot(0).inventory)));
 
-		ServerPlayNetworking.registerGlobalReceiver(DepositButton.QuickStackPayload.ID, (payload, context) ->
+		ServerPlayNetworking.registerGlobalReceiver(Networking.QuickStackPayload.ID, (payload, context) ->
 				context.server().execute(() -> InventoryManager.quickStack(context.player().currentScreenHandler)));
 
-		ServerPlayNetworking.registerGlobalReceiver(LootButton.RestockPayload.ID, (payload, context) ->
+		ServerPlayNetworking.registerGlobalReceiver(Networking.RestockPayload.ID, (payload, context) ->
 				context.server().execute(() -> InventoryManager.restock(context.player())));
 
-		ServerPlayNetworking.registerGlobalReceiver(DepositButton.DepositAllPayload.ID, (payload, context) ->
+		ServerPlayNetworking.registerGlobalReceiver(Networking.DepositAllPayload.ID, (payload, context) ->
 				context.server().execute(() -> InventoryManager.depositAll(context.player().currentScreenHandler)));
 
-		ServerPlayNetworking.registerGlobalReceiver(LootButton.LootAllPayload.ID, (payload, context) ->
+		ServerPlayNetworking.registerGlobalReceiver(Networking.LootAllPayload.ID, (payload, context) ->
 				context.server().execute(() -> InventoryManager.lootAll(context.player().currentScreenHandler)));
 		/*?} else {*/
 		/*ServerPlayNetworking.registerGlobalReceiver(SORT_INVENTORY, (server, player, handler, buf, responseSender) ->
