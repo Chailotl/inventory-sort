@@ -12,5 +12,6 @@
 	"text.config.inventory_sort.title": "Chai's Inventory Sorter Config",
 	"text.config.inventory_sort.option.sortOrder": "Sort Order",
 	"text.config.inventory_sort.option.containerScreens": "Container Screens",
-	"text.config.inventory_sort.option.disabledScreens": "Disabled Screens"
+	"text.config.inventory_sort.option.disabledScreens": "Disabled Screens",
+	"text.config.inventory_sort.option.disableModdedScreens": "Disabled Modded Screens"
 }

@@ -41,6 +41,7 @@ public class ClientMain implements ClientModInitializer
 					return false;
 				}
 			}) || screenHandler instanceof CreativeInventoryScreen.CreativeScreenHandler) { return; }
+			if (Main.CONFIG.disableModdedScreens() && !id.getNamespace().equals("minecraft")) { return; }
 
 			// Need to figure out a way to update it when changing tabs
 			//if (handledScreen instanceof CreativeInventoryScreen && ((AccessorCreativeInventoryScreen) handledScreen).getSelectedTab().getType() != ItemGroup.Type.INVENTORY) { return; }

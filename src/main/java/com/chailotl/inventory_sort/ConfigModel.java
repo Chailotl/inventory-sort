@@ -67,4 +67,6 @@ public class ConfigModel
 		"net.minecraft.screen.BeaconScreenHandler",
 		"net.minecraft.screen.LoomScreenHandler"
 	);
+
+	public boolean disableModdedScreens = false;
 }
