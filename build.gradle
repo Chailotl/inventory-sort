@@ -83,6 +83,7 @@ jar {
 publishing {
 	publications {
 		create("mavenJava", MavenPublication) {
+			artifactId = project.archives_base_name
 			from components.java
 		}
 	}
@@ -103,7 +104,7 @@ if (project.gradle.getProperties().get("modrinth_token") != null) {
 		file = remapJar.archiveFile
 		changelog = changelogFile.exists() ? changelogFile.text : ""
 		type = STABLE
-		displayName = "${project.mod_name} ${project.mod_version}"
+		displayName = "${project.mod_name} ${project.version}"
 		modLoaders.add("fabric")
 
 		modrinth {
