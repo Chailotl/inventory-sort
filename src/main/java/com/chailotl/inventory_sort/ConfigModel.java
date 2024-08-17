@@ -3,6 +3,7 @@ package com.chailotl.inventory_sort;
 import com.chailotl.sushi_bar.owo.config.SushiModmenu;
 import io.wispforest.owo.config.Option;
 import io.wispforest.owo.config.annotation.*;
+import net.minecraft.util.Identifier;
 
 import java.util.Arrays;
 import java.util.List;
@@ -43,12 +44,17 @@ public class ConfigModel
 		"damage"
 	);
 
-	public List<String> containerScreens = Arrays.asList(
-		"net.minecraft.screen.GenericContainerScreenHandler",
-		"net.minecraft.screen.ShulkerBoxScreenHandler",
-		"net.minecraft.screen.Generic3x3ContainerScreenHandler",
-		"net.minecraft.screen.HopperScreenHandler",
-		"net.minecraft.screen.HorseScreenHandler"
+	public List<Identifier> containerScreens = Arrays.asList(
+			Identifier.of("minecraft", "generic_9x1"),
+			Identifier.of("minecraft", "generic_9x2"),
+			Identifier.of("minecraft", "generic_9x3"),
+			Identifier.of("minecraft", "generic_9x4"),
+			Identifier.of("minecraft", "generic_9x5"),
+			Identifier.of("minecraft", "generic_9x6"),
+			Identifier.of("minecraft", "generic_3x3"),
+			Identifier.of("minecraft", "shulker_box"),
+			Identifier.of("minecraft", "hopper"),
+			Identifier.of("minecraft", "horse")
 	);
 
 	/*public List<String> screenOffsetsKey = Arrays.asList(
@@ -63,9 +69,12 @@ public class ConfigModel
 		1
 	);*/
 
-	public List<String> disabledScreens = Arrays.asList(
-		"net.minecraft.screen.BeaconScreenHandler",
-		"net.minecraft.screen.LoomScreenHandler"
+	public List<Identifier> disabledScreens = Arrays.asList(
+		Identifier.of("minecraft", "beacon"),
+		Identifier.of("minecraft", "loom"),
+		Identifier.of("minecraft", "creative"),
+		Identifier.of("computercraft", "computer"),
+		Identifier.of("computercraft", "turtle")
 	);
 
 	public boolean disableModdedScreens = false;
