@@ -48,6 +48,7 @@ public class ComparatorTypes
 		return l - r;
 	};
 
+	// Place specific item first
 	public static Comparator<ItemStack> item(Identifier id)
 	{
 		return (lhs, rhs) ->
@@ -61,6 +62,7 @@ public class ComparatorTypes
 		};
 	}
 
+	// Place specific item tag first
 	public static Comparator<ItemStack> itemTag(Identifier id)
 	{
 		return (lhs, rhs) ->
@@ -72,6 +74,7 @@ public class ComparatorTypes
 		};
 	}
 
+	// Place specific block tag first
 	public static Comparator<ItemStack> blockTag(Identifier id)
 	{
 		return (lhs, rhs) ->
@@ -85,8 +88,8 @@ public class ComparatorTypes
 			if (lItem instanceof BlockItem)
 			{
 				if (Block.getBlockFromItem(lItem)
-						  .getDefaultState()
-						  .isIn(TagKey.of(RegistryKeys.BLOCK, id)))
+					.getDefaultState()
+					.isIn(TagKey.of(RegistryKeys.BLOCK, id)))
 				{
 					l = 0;
 				}
@@ -95,8 +98,8 @@ public class ComparatorTypes
 			if (rItem instanceof BlockItem)
 			{
 				if (Block.getBlockFromItem(rItem)
-						  .getDefaultState()
-						  .isIn(TagKey.of(RegistryKeys.BLOCK, id)))
+					.getDefaultState()
+					.isIn(TagKey.of(RegistryKeys.BLOCK, id)))
 				{
 					r = 0;
 				}
@@ -106,6 +109,7 @@ public class ComparatorTypes
 		};
 	}
 
+	// Place specific item group first
 	public static Comparator<ItemStack> itemGroup(Identifier id)
 	{
 		return (lhs, rhs) ->
@@ -124,35 +128,26 @@ public class ComparatorTypes
 		};
 	}
 
+	// Order by item group order
 	public static Comparator<ItemStack> itemGroupOrder(Identifier id)
 	{
 		return (lhs, rhs) ->
 		{
 			ItemGroup group = Registries.ITEM_GROUP.get(id);
 
-			if (group == null)
-			{
-				return 0;
-			}
+			if (group == null) { return 0; }
 
-			ItemStack[] arr = group.getSearchTabStacks().toArray(new ItemStack[0]);
-			var foo = Lists.newArrayList(group.getSearchTabStacks());
+			var list = Lists.newArrayList(group.getSearchTabStacks());
 
 			int l = 0;
 			int r = 0;
 
-			for (int i = 0; i < foo.size(); ++i)
+			for (int i = 0; i < list.size(); ++i)
 			{
-				Item item = foo.get(i).getItem();
+				Item item = list.get(i).getItem();
 
-				if (lhs.isOf(item))
-				{
-					l = i;
-				}
-				if (rhs.isOf(item))
-				{
-					r = i;
-				}
+				if (lhs.isOf(item)) { l = i; }
+				if (rhs.isOf(item)) { r = i; }
 			}
 
 			return l - r;
