@@ -2,7 +2,7 @@
 	"schemaVersion": 1,
 	"id": "inventory_sort",
 	"version": "${version}",
-	"name": "Chai's Inventory Sorter",
+	"name": "${name}",
 	"description": "An inventory sorter that complements the vanilla UI with fully configurable sorting",
 	"authors": [
 		"Chai"

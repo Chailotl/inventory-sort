@@ -1,7 +1,7 @@
 plugins {
-	id 'fabric-loom' version '1.6-SNAPSHOT'
+	id 'fabric-loom' version '1.7-SNAPSHOT'
 	id 'maven-publish'
-	id "me.modmuss50.mod-publish-plugin" version "0.5.1"
+	id "me.modmuss50.mod-publish-plugin" version "0.6.3"
 	id "dev.kikugie.stonecutter"
 }
 
@@ -50,7 +50,8 @@ loom {
 
 processResources {
 	def map = [
-		"version": version,
+		"name": project.mod_name,
+		"version": project.version,
 		"minecraft_version": project.minecraft_version
 	]
 
@@ -95,14 +96,14 @@ publishing {
 	}
 }
 
-if (project.gradle.startParameter.taskNames[0] == "publishMods") {
+if (project.gradle.getProperties().get("modrinth_token") != null) {
 	publishMods {
+		File changelogFile = new File("CHANGELOG.md")
+
 		file = remapJar.archiveFile
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in))
-		System.out.println("Enter changelog:")
-		changelog = br.readLine()
+		changelog = changelogFile.exists() ? changelogFile.text : ""
 		type = STABLE
-		displayName = "Chai's Inventory Sorter ${project.mod_version}+${project.minecraft_version}"
+		displayName = "${project.mod_name} ${project.mod_version}"
 		modLoaders.add("fabric")
 
 		modrinth {
