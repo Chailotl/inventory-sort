@@ -41,7 +41,7 @@ public class ClientMain implements ClientModInitializer
 			try
 			{
 				id = Registries.SCREEN_HANDLER.getId(screenHandler.getType());
-				Main.LOGGER.info(id.toString()); // DEBUG
+				//Main.LOGGER.info(id.toString()); // DEBUG
 			}
 			catch (Exception ignored) {}
 
