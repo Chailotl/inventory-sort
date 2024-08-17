@@ -4,7 +4,9 @@ import io.wispforest.owo.config.ConfigSynchronizer;
 import io.wispforest.owo.config.Option;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
+import net.minecraft.item.ItemGroups;
 import net.minecraft.item.ItemStack;
+import net.minecraft.resource.featuretoggle.FeatureFlags;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -61,7 +63,7 @@ public class InventoryManager
 		}
 
 		// Poke the creative menu - this is dumb despite being necessary
-		//ItemGroups.updateDisplayContext(FeatureFlags.DEFAULT_ENABLED_FEATURES, false, player.getWorld().getRegistryManager());
+		ItemGroups.updateDisplayContext(FeatureFlags.DEFAULT_ENABLED_FEATURES, false, player.getWorld().getRegistryManager());
 
 		// Get player config
 		var config = ConfigSynchronizer.getClientOptions(player, "inventory_sort");
