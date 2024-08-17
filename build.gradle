@@ -19,6 +19,7 @@ repositories {
 	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
 	// for more information about repositories.
 	maven { url 'https://maven.wispforest.io' }
+	maven { url "https://maven.axoga.to/releases" }
 }
 
 loom {
@@ -37,18 +38,17 @@ dependencies {
 	annotationProcessor modImplementation("io.wispforest:owo-lib:${project.owo_version}")
 	include "io.wispforest:owo-sentinel:${project.owo_version}"
 
+	modImplementation "com.chailotl:sushi_bar:${project.sushi_version}"
 }
 
-if (stonecutter.current.isActive) { // run configs for non-active version would be invalid
-	loom {
-		runConfigs.all {
-			ideConfigGenerated = true // generate IDE tasks for running client, server and testmod, datagen if those are present
-			runDir "../../run" // use a global run directory for all versions
-		}
+loom {
+	runConfigs.all {
+		ideConfigGenerated true // Run configurations are not created for subprojects by default
+		runDir "../../run" // Use a shared run folder and just create separate worlds
 	}
 }
 
-tasks.processResources {
+processResources {
 	def map = [
 		"version": version,
 		"minecraft_version": project.minecraft_version
@@ -114,6 +114,7 @@ if (project.gradle.startParameter.taskNames[0] == "publishMods") {
 			}
 			requires("fabric-api")
 			requires("owo-lib")
+			requires("sushi-bar")
 			optional("modmenu")
 		}
 	}

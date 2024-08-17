@@ -1,12 +1,13 @@
 package com.chailotl.inventory_sort;
 
+import com.chailotl.sushi_bar.owo.config.SushiModmenu;
 import io.wispforest.owo.config.Option;
 import io.wispforest.owo.config.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
 
-@Modmenu(modId = Main.MOD_ID)
+@SushiModmenu(modId = Main.MOD_ID)
 @Config(name = Main.MOD_ID, wrapperName = "InventorySortConfig")
 public class ConfigModel
 {

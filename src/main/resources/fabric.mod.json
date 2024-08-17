@@ -39,9 +39,7 @@
 		"minecraft": "~${minecraft_version}",
 		"java": ">=17",
 		"fabric-api": "*",
-		"owo-lib": "^0.11.2"
-	},
-	"suggests": {
-		"another-mod": "*"
+		"owo-lib": "^0.11.2",
+		"sushi_bar": "*"
 	}
 }
