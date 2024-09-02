@@ -1,0 +1,17 @@
+{
+  "gui.inventory_sort.tooltip.sort": "整理",
+  "gui.inventory_sort.tooltip.sort_inventory": "整理背包",
+  "gui.inventory_sort.tooltip.sort_container": "整理容器",
+  "gui.inventory_sort.tooltip.restock": "補貨",
+  "gui.inventory_sort.tooltip.quick_stack": "快速堆疊",
+  "gui.inventory_sort.tooltip.loot_all": "拿出全部",
+  "gui.inventory_sort.tooltip.deposit_all": "存入全部",
+  "gui.inventory_sort.tooltip.hold_to_action": "按住 [%1$s] 以 %2$s",
+  "gui.inventory_sort.tooltip.shift": "Shift",
+
+  "text.config.inventory_sort.title": "Chai 的物品整理設置",
+  "text.config.inventory_sort.option.sortOrder": "整理順序",
+  "text.config.inventory_sort.option.containerScreens": "容器界面",
+  "text.config.inventory_sort.option.disabledScreens": "禁用界面",
+  "text.config.inventory_sort.option.disableModdedScreens": "禁用修改界面"
+}
