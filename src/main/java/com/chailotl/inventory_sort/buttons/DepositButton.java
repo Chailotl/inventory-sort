@@ -27,8 +27,8 @@ public class DepositButton extends InventoryButton
         /*?} else {*/
         /*super(parent, x, y, false, Icon.DEPOSIT, (button) -> {
             ClientPlayNetworking.send(Screen.hasShiftDown()
-                ? new Main.DepositAllPayload(null)
-                : new Main.QuickStackPayload(null)
+                ? new Main.DepositAllPayload()
+                : new Main.QuickStackPayload()
             );
         });
         *//*?}*/

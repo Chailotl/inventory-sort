@@ -23,7 +23,7 @@ public class SortContainerButton extends InventoryButton
         /*?} else {*/
         /*super(parent, x, y, true, Icon.SORT, (button) -> {
             ClientPlayNetworking.send(
-                new Main.SortContainerPayload(null)
+                new Main.SortContainerPayload()
             );
         });
         *//*?}*/

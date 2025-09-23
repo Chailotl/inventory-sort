@@ -27,8 +27,8 @@ public class LootButton extends InventoryButton
         /*?} else {*/
         /*super(parent, x, y, false, Icon.LOOT, (button) -> {
             ClientPlayNetworking.send(Screen.hasShiftDown()
-                ? new Main.LootAllPayload(null)
-                : new Main.RestockPayload(null)
+                ? new Main.LootAllPayload()
+                : new Main.RestockPayload()
             );
         });
         *//*?}*/
