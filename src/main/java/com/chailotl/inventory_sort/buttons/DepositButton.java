@@ -17,12 +17,21 @@ public class DepositButton extends InventoryButton
 {
 	public DepositButton(HandledScreen<?> parent, int x, int y)
 	{
+        /*? if <1.21 {*/
 		super(parent, x, y, false, Icon.DEPOSIT, (button) -> {
 			ClientPlayNetworking.send(Screen.hasShiftDown()
 				? Main.DEPOSIT_ALL
 				: Main.QUICK_STACK,
 				new PacketByteBuf(Unpooled.buffer()));
 		});
+        /*?} else {*/
+        /*super(parent, x, y, false, Icon.DEPOSIT, (button) -> {
+            ClientPlayNetworking.send(Screen.hasShiftDown()
+                ? new Main.DepositAllPayload(null)
+                : new Main.QuickStackPayload(null)
+            );
+        });
+        *//*?}*/
 
 		setTooltip(new ShiftTooltip(
 			Text.translatable("gui.inventory_sort.tooltip.quick_stack")

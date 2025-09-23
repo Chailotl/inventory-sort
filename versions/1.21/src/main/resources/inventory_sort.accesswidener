@@ -1,0 +1,5 @@
+accessWidener v2 named
+accessible method net/minecraft/client/gui/tooltip/Tooltip <init> (Lnet/minecraft/text/Text;Lnet/minecraft/text/Text;)V
+accessible field net/minecraft/client/gui/tooltip/Tooltip content Lnet/minecraft/text/Text;
+accessible field net/minecraft/client/gui/tooltip/Tooltip lines Ljava/util/List;
+accessible class net/minecraft/client/gui/screen/ingame/CreativeInventoryScreen$CreativeSlot

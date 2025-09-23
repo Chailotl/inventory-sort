@@ -8,6 +8,9 @@ plugins {
 version = "${project.mod_version}+${project.minecraft_version}"
 group = project.maven_group
 
+def javaVer = stonecutter.eval(stonecutter.current.version, ">=1.20.5")
+        ? JavaVersion.VERSION_21 : JavaVersion.VERSION_17
+
 base {
 	archivesName = project.archives_base_name
 }
@@ -60,7 +63,7 @@ processResources {
 }
 
 tasks.withType(JavaCompile).configureEach {
-	it.options.release = 17
+	it.options.release = stonecutter.eval(stonecutter.current.version, ">=1.20.5") ? 21 : 17
 }
 
 java {
@@ -69,8 +72,9 @@ java {
 	// If you remove this line, sources will not be generated.
 	withSourcesJar()
 
-	sourceCompatibility = JavaVersion.VERSION_17
-	targetCompatibility = JavaVersion.VERSION_17
+    print("java: ${javaVer}")
+    targetCompatibility = javaVer
+    sourceCompatibility = javaVer
 }
 
 jar {

@@ -17,12 +17,21 @@ public class LootButton extends InventoryButton
 {
 	public LootButton(HandledScreen<?> parent, int x, int y)
 	{
+        /*? if <1.21 {*/
 		super(parent, x, y, false, Icon.LOOT, (button) -> {
 			ClientPlayNetworking.send(Screen.hasShiftDown()
 				? Main.LOOT_ALL
 				: Main.RESTOCK,
 				new PacketByteBuf(Unpooled.buffer()));
 		});
+        /*?} else {*/
+        /*super(parent, x, y, false, Icon.LOOT, (button) -> {
+            ClientPlayNetworking.send(Screen.hasShiftDown()
+                ? new Main.LootAllPayload(null)
+                : new Main.RestockPayload(null)
+            );
+        });
+        *//*?}*/
 
 		setTooltip(new ShiftTooltip(
 			Text.translatable("gui.inventory_sort.tooltip.restock")
