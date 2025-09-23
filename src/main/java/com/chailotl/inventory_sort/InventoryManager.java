@@ -89,7 +89,7 @@ public class InventoryManager
 					{
 						continue;
 					}
-					Identifier id = new Identifier(split[1], split[2]);
+					Identifier id = Main.id(split[1], split[2]);
 					switch (split[0])
 					{
 						case "item" -> comparators.add(ComparatorTypes.item(id));
@@ -200,6 +200,10 @@ public class InventoryManager
 
 	public static boolean isNbtEqual(ItemStack stack1, ItemStack stack2)
 	{
+        /*? if <1.20.5 {*/
         return !stack1.hasNbt() || !stack2.hasNbt() || stack1.getNbt().equals(stack2.getNbt());
+         /*?} else {*/
+        /*return stack1.getComponents().equals(stack2.getComponents());
+        *//*?}*/
     }
 }

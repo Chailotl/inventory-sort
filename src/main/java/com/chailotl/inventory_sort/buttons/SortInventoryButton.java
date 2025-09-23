@@ -15,10 +15,18 @@ public class SortInventoryButton extends InventoryButton
 {
 	public SortInventoryButton(HandledScreen<?> parent, int x, int y)
 	{
+        /*? if <1.21 {*/
 		super(parent, x, y, false, Icon.SORT, (button) -> {
 			ClientPlayNetworking.send(Main.SORT_INVENTORY,
 				new PacketByteBuf(Unpooled.buffer()));
 		});
+        /*?} else {*/
+        /*super(parent, x, y, false, Icon.SORT, (button) -> {
+            ClientPlayNetworking.send(
+                new Main.SortInventoryPayload()
+            );
+        });
+        *//*?}*/
 
 		setTooltip(Tooltip.of(Text.translatable("gui.inventory_sort.tooltip.sort_inventory")));
 	}
